@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/images.jpg">
+    <title>Sobre nós</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root{
+    --verde-profundo: #4a0808;
+    --verde-musgo: #dd1818;
+    --mostarda: #c99a3f;
+    --mostarda-clara: #e0b968;
+    --papel: #f7f1de;
+    --papel-escuro: #ece2c4;
+    --solo: #2f2013;
+    --madeira: #5a4632;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: var(--verde-profundo);
+}
+
+.img-responsive{
+    width: clamp(24px, 4vw, 34px);
+    height: clamp(24px, 4vw, 34px);
+    margin-left: 2vw;
+    display: block;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+    width: 100%;
+    height: 8vh;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(248, 1, 1, 0.938) ;
+    border-bottom: 3px solid white;
+    box-shadow: 0px 2px 12px rgba(248, 1, 1, 0.938);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.voltar{
+    display: flex;
+    align-items: center;
+}
+
+.voltar a{
+    display: flex;
+    padding: 6px;
+    border-radius: 50%;
+    transition: transform 0.35s ease, background-color 0.35s ease;
+}
+
+.voltar:hover a{
+    transform: scale(1.15);
+    background-color: rgba(201, 154, 63, 0.18);
+}
+
+.voltar a:focus-visible{
+    outline: 2px solid rgba(248, 1, 1, 0.938);
+    outline-offset: 3px;
+}
+
+.navbar-marca{
+    margin-left: auto;
+    margin-right: 4vw;
+    font-family: "Fraunces", serif;
+    font-weight: 700;
+    font-style: italic;
+    color: rgb(255, 255, 255);
+    font-size: clamp(14px, 1.6vw, 20px);
+    letter-spacing: 0.02em;
+}
+
+/* ===== CONTEÚDO ===== */
+.conteudo{
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 900px) 1fr;
+    min-height: 92vh;
+    width: 100%;
+    align-items: center;
+    background-image:
+        linear-gradient(180deg, rgba(30, 5, 5, 0.9) 0%, rgba(30, 5, 5, 0.7) 45%, rgba(30, 5, 5, 0.92) 100%),
+        url(./img/foto.png);
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+}
+
+/* ===== CARTÃO "ETIQUETA DE SEMENTES" ===== */
+.texto{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--papel);
+    background-image:
+        radial-gradient(circle at 12% 18%, rgba(221, 24, 24, 0.06) 0%, transparent 35%),
+        radial-gradient(circle at 88% 82%, rgba(201, 154, 63, 0.08) 0%, transparent 40%);
+    min-height: 70vh;
+    height: auto;
+    padding: 46px 20px 40px;
+    border-radius: 6px;
+    text-align: center;
+    font-family: "Work Sans", sans-serif;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    width: 100%;
+    border: 2px solid var(--madeira);
+    animation: subir 0.7s ease-out both;
+}
+
+.texto::before{
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    height: 14px;
+    background-color: var(--verde-musgo);
+    border-radius: 6px 6px 0 0;
+    border: 2px solid var(--madeira);
+    border-bottom: none;
+}
+
+.rotulo{
+    display: inline-block;
+    margin-top: 6px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: clamp(11px, 1vw, 13px);
+    color: var(--verde-musgo);
+}
+
+.texto h1{
+    margin-top: 10px;
+    color: var(--solo);
+    font-family: "Fraunces", serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(32px, 4.2vw, 56px);
+    line-height: 1.1;
+}
+
+.divisor{
+    width: clamp(110px, 14vw, 160px);
+    height: 20px;
+    color: var(--mostarda);
+    margin: 18px 0 8px;
+}
+
+.texto p{
+    margin-inline: 5vw;
+    margin-top: 10px;
+    font-size: clamp(16px, 1.25vw, 20px);
+    color: var(--madeira);
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    text-align: left;
+}
+
+.texto p::first-letter{
+    font-family: "Fraunces", serif;
+    font-weight: 900;
+    font-size: 3.1em;
+    float: left;
+    line-height: 0.8;
+    padding: 0.05em 0.08em 0 0;
+    color: var(--verde-musgo);
+}
+
+@keyframes subir{
+    from{
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .texto{
+        animation: none;
+    }
+    .voltar a{
+        transition: none;
+    }
+}
+
+/* Tablets */
+@media (max-width: 900px){
+    .conteudo{
+        grid-template-columns: 1fr;
+        padding: 24px 4vw;
+    }
+    .void{
+        display: none;
+    }
+    .texto{
+        min-height: auto;
+    }
+    .texto p{
+        margin-inline: 4vw;
+    }
+    .navbar-marca{
+        font-size: 15px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px){
+    .navbar{
+        height: 60px;
+    }
+    .navbar-marca{
+        margin-right: 5vw;
+        font-size: 13px;
+    }
+    .texto{
+        padding: 40px 15px 28px;
+        border-width: 2px;
+    }
+    .texto h1{
+        margin-top: 8px;
+        font-size: 28px;
+    }
+    .divisor{
+        width: 100px;
+        margin: 14px 0 6px;
+    }
+    .texto p{
+        font-size: 15.5px;
+        margin-inline: 0;
+        line-height: 1.65;
+    }
+    .texto p::first-letter{
+        font-size: 2.6em;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="voltar">
+            <a href="index.html"><img src="./img/seta-branca.png" alt="Voltar para o início" class="img-responsive"></a>
+        </div>
+        <span class="navbar-marca">Casa do Sitiante</span>
+    </div>
+    <div class="conteudo">
+        <div class="void"></div>
+        <div class="texto">
+            <span class="rotulo">Nossa história</span>
+            <h1>Sobre nós</h1>
+
+            <svg class="divisor" viewBox="0 0 200 24" aria-hidden="true">
+                <path d="M0 12 C 40 2, 60 22, 100 12 S 160 2, 200 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="100" cy="12" r="3.5" fill="currentColor"/>
+            </svg>
+
+            <p>A Casa do Sitiante é uma empresa especializada em oferecer produtos e soluções para agricultura, jardinagem, paisagismo e cuidados com animais, atendendo clientes da região há mais de 40 anos com qualidade e confiança. Em seu amplo catálogo, é possível encontrar fertilizantes, substratos, sementes, defensivos agrícolas, ferramentas, vasos, equipamentos e diversos acessórios para o cultivo de plantas e manutenção de áreas verdes. Além disso, a loja conta com uma grande variedade de rações para cães, gatos, aves, peixes e outros animais, além de medicamentos veterinários, oferecendo opções de marcas reconhecidas que garantem nutrição, saúde e bem-estar. A empresa também disponibiliza produtos para hortas, pomares, gramados, orquídeas, coqueiros, palmeiras e diferentes tipos de cultivo. O atendimento é um dos seus principais diferenciais, proporcionando orientação personalizada para que cada cliente encontre a melhor solução para suas necessidades. Com mais de quatro décadas de experiência, compromisso, responsabilidade e excelência, a Casa do Sitiante busca oferecer produtos de alta qualidade, preços competitivos e um ambiente acolhedor. Dessa forma, consolidou-se como uma referência na região, reunindo em um único lugar tudo o que é necessário para o campo, o jardim e o cuidado com os animais.</p>
+        </div>
+        <div class="void"></div>
+    </div>
+</body>
+</html>

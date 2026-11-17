@@ -1,0 +1,46 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="320" height="320" rx="28" fill="#DCE7CC"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="165" cy="262" rx="92" ry="14" fill="#241F1B" opacity="0.10"/>
+
+  <!-- tail wagging -->
+  <path d="M234 176 Q272 150 256 122 Q256 150 224 164 Z" fill="#B9793F"/>
+  <path d="M234 176 Q276 186 268 214 Q258 194 226 188 Z" fill="#B9793F" opacity="0.85"/>
+
+  <!-- both hind/front legs, relaxed sitting -->
+  <path d="M198 232 Q206 260 196 270 L172 270 Q178 250 182 232 Z" fill="#C9895B"/>
+  <path d="M150 210 Q150 245 144 268 L122 268 Q126 240 132 212 Z" fill="#C9895B"/>
+
+  <!-- body -->
+  <ellipse cx="172" cy="200" rx="72" ry="58" fill="#D69A66"/>
+  <ellipse cx="150" cy="222" rx="34" ry="26" fill="#EAC9A0"/>
+
+  <!-- head, upright and alert -->
+  <circle cx="126" cy="112" r="52" fill="#D69A66"/>
+  <ellipse cx="122" cy="134" rx="26" ry="18" fill="#EAC9A0"/>
+
+  <!-- both ears perked -->
+  <path d="M168 72 Q192 46 180 88 Q170 92 160 88 Z" fill="#B9793F"/>
+  <path d="M96 70 Q72 46 84 88 Q94 92 104 86 Z" fill="#C9895B"/>
+
+  <!-- snout -->
+  <ellipse cx="96" cy="126" rx="20" ry="15" fill="#EAC9A0"/>
+  <ellipse cx="80" cy="124" rx="7" ry="5.5" fill="#2B2118"/>
+
+  <!-- happy eyes -->
+  <path d="M112 96 Q122 86 132 96" stroke="#2B2118" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <path d="M148 100 Q156 92 164 100" stroke="#2B2118" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+
+  <!-- tongue out, panting happily -->
+  <path d="M94 140 Q90 162 104 168 Q118 162 108 140 Z" fill="#E7857A"/>
+
+  <!-- sparkles -->
+  <g fill="#C99A3C">
+    <path d="M206 70 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z"/>
+    <path d="M64 108 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z"/>
+  </g>
+
+  <!-- calm halo -->
+  <circle cx="126" cy="112" r="66" fill="none" stroke="#8B9A66" stroke-width="3" stroke-dasharray="3 8" opacity="0.55"/>
+</svg>

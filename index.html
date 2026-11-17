@@ -1,0 +1,4167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d80f14">
+
+  <title>Casa do Sitiante</title>
+
+  <link rel="icon" type="image/x-icon" href="./img/images.jpg">
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root{
+      --vermelho:#d80f14;
+      --vermelho-escuro:#98090c;
+      --vermelho-claro:#ff2a30;
+      --preto:#111;
+      --cinza:#555;
+      --branco:#fff;
+
+      --sombra:
+      0 18px 45px rgba(0,0,0,.12);
+
+      --sombra-forte:
+      0 24px 60px rgba(0,0,0,.18);
+
+      --largura:1180px;
+    }
+
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:90px;
+    }
+
+
+    body{
+      font-family:"Inter",Arial,sans-serif;
+      background:#f5f5f5;
+      color:var(--preto);
+      overflow-x:hidden;
+    }
+
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+
+    a{
+      color:inherit;
+    }
+
+
+    button,
+    input{
+      font:inherit;
+    }
+
+
+    .container{
+      width:min(92%,var(--largura));
+      margin:auto;
+    }
+
+
+    .section-title{
+      font-family:"Bebas Neue",sans-serif;
+
+      font-size:
+      clamp(2.8rem,6vw,5.2rem);
+
+      line-height:.95;
+    }
+
+
+    .section-text{
+      color:#555;
+
+      line-height:1.8;
+
+      font-size:
+      clamp(.98rem,1.5vw,1.1rem);
+    }
+
+
+    .tag{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      width:max-content;
+
+      padding:9px 14px;
+
+      border-radius:100px;
+
+      background:
+      rgba(216,15,20,.1);
+
+      color:
+      var(--vermelho);
+
+      font-size:.82rem;
+
+      font-weight:800;
+
+      text-transform:uppercase;
+
+      letter-spacing:.08em;
+    }
+
+
+    .btn{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      min-height:52px;
+
+      padding:0 24px;
+
+      border:none;
+
+      border-radius:16px;
+
+      text-decoration:none;
+
+      font-weight:800;
+
+      cursor:pointer;
+
+      transition:.25s;
+    }
+
+
+    .btn-primary{
+
+      color:#fff;
+
+      background:
+      linear-gradient(
+        135deg,
+        var(--vermelho-claro),
+        var(--vermelho-escuro)
+      );
+
+      box-shadow:
+      0 12px 28px rgba(216,15,20,.28);
+    }
+
+
+    .btn-primary:hover{
+
+      transform:
+      translateY(-3px);
+
+      box-shadow:
+      0 16px 34px rgba(216,15,20,.36);
+    }
+
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+
+    .topbar{
+
+      position:sticky;
+
+      top:0;
+
+      z-index:2000;
+
+      background:
+      rgba(191,9,13,.96);
+
+      backdrop-filter:
+      blur(14px);
+
+      box-shadow:
+      0 8px 28px rgba(0,0,0,.17);
+    }
+
+
+    .header-inner{
+
+      width:
+      min(94%,var(--largura));
+
+      min-height:84px;
+
+      margin:auto;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:24px;
+    }
+
+
+    .brand{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:13px;
+
+      text-decoration:none;
+
+      color:white;
+    }
+
+
+    .brand img{
+
+      width:62px;
+
+      height:62px;
+
+      object-fit:cover;
+
+      border-radius:50%;
+
+      border:
+      3px solid rgba(255,255,255,.85);
+
+      box-shadow:
+      0 8px 22px rgba(0,0,0,.22);
+    }
+
+
+    .brand-name{
+
+      font-family:
+      "Bebas Neue",sans-serif;
+
+      font-size:1.7rem;
+
+      letter-spacing:.04em;
+    }
+
+
+    .nav-links{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+    }
+
+
+    .nav-links a{
+
+      color:white;
+
+      text-decoration:none;
+
+      font-weight:700;
+
+      font-size:.95rem;
+
+      padding:
+      12px 14px;
+
+      border-radius:12px;
+
+      transition:.25s;
+    }
+
+
+    .nav-links a:hover{
+
+      background:
+      rgba(255,255,255,.14);
+
+      transform:
+      translateY(-1px);
+    }
+
+
+    .hamburger{
+
+      display:none;
+
+      width:48px;
+
+      height:48px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:
+      rgba(255,255,255,.12);
+
+      cursor:pointer;
+
+      padding:11px;
+    }
+
+
+    .hamburger span{
+
+      display:block;
+
+      height:3px;
+
+      margin:5px 0;
+
+      border-radius:99px;
+
+      background:white;
+
+      transition:.3s;
+    }
+
+
+    .hamburger.open span:nth-child(1){
+
+      transform:
+      translateY(8px)
+      rotate(45deg);
+    }
+
+
+    .hamburger.open span:nth-child(2){
+
+      opacity:0;
+    }
+
+
+    .hamburger.open span:nth-child(3){
+
+      transform:
+      translateY(-8px)
+      rotate(-45deg);
+    }
+
+
+
+    /* =========================
+       CARROSSEL
+    ========================= */
+
+
+    .hero{
+      background:#161616;
+    }
+
+
+    .carousel{
+
+      position:relative;
+
+      width:100%;
+
+      height:
+      clamp(420px,67vh,720px);
+
+      overflow:hidden;
+    }
+
+
+    .slides{
+
+      display:flex;
+
+      height:100%;
+
+      transition:
+      transform .6s cubic-bezier(.22,.61,.36,1);
+    }
+
+
+    .slides img{
+
+      min-width:100%;
+
+      height:100%;
+
+      object-fit:cover;
+    }
+
+
+    .carousel::after{
+
+      content:"";
+
+      position:absolute;
+
+      inset:0;
+
+      pointer-events:none;
+
+      background:
+      linear-gradient(
+        to top,
+        rgba(0,0,0,.35),
+        transparent 38%
+      );
+    }
+
+
+    .carousel-control{
+
+      position:absolute;
+
+      z-index:5;
+
+      top:50%;
+
+      transform:
+      translateY(-50%);
+
+      width:50px;
+
+      height:50px;
+
+      border:
+      1px solid rgba(255,255,255,.4);
+
+      border-radius:50%;
+
+      background:
+      rgba(0,0,0,.36);
+
+      color:white;
+
+      font-size:1.6rem;
+
+      cursor:pointer;
+
+      backdrop-filter:
+      blur(6px);
+
+      transition:.25s;
+    }
+
+
+    .carousel-control:hover{
+
+      background:
+      var(--vermelho);
+
+      transform:
+      translateY(-50%)
+      scale(1.07);
+    }
+
+
+    .prev{
+      left:22px;
+    }
+
+
+    .next{
+      right:22px;
+    }
+
+
+    .dots{
+
+      position:absolute;
+
+      z-index:6;
+
+      bottom:22px;
+
+      left:50%;
+
+      transform:
+      translateX(-50%);
+
+      display:flex;
+
+      gap:9px;
+    }
+
+
+    .dot{
+
+      border:none;
+
+      width:10px;
+
+      height:10px;
+
+      padding:0;
+
+      border-radius:100px;
+
+      background:
+      rgba(255,255,255,.55);
+
+      cursor:pointer;
+
+      transition:.25s;
+    }
+
+
+    .dot.active{
+
+      width:30px;
+
+      background:white;
+    }
+
+
+
+    /* =========================
+       MARCAS
+    ========================= */
+
+
+    .brands{
+
+      overflow:hidden;
+
+      padding:28px 0;
+
+      background:white;
+
+      border-bottom:
+      1px solid #ececec;
+    }
+
+
+    .brands-track{
+
+      width:max-content;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:22px;
+
+      animation:
+      marquee 22s linear infinite;
+    }
+
+
+    .brands:hover
+    .brands-track{
+
+      animation-play-state:
+      paused;
+    }
+
+
+    .brand-card{
+
+      width:150px;
+
+      height:110px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:20px;
+
+      border-radius:20px;
+
+      background:white;
+
+      border:
+      1px solid #ececec;
+
+      box-shadow:
+       0px 8px 22px rgba(0,0,0, .58);
+
+      flex-shrink:0;
+    }
+
+
+    .brand-card img{
+
+      max-width:100%;
+
+      max-height:100%;
+
+      object-fit:contain;
+    }
+
+
+    @keyframes marquee{
+
+      from{
+        transform:
+        translateX(0);
+      }
+
+      to{
+        transform:
+        translateX(
+          calc(-50% - 11px)
+        );
+      }
+
+    }
+
+
+
+    /* =========================
+       LOCALIZAÇÃO
+    ========================= */
+
+
+    .location-section{
+
+      padding:
+      100px 0;
+
+      background:
+
+      radial-gradient(
+        circle at 0 0,
+        rgba(216,15,20,.08),
+        transparent 28%
+      ),
+
+      #f6f6f6;
+    }
+
+
+    .location-grid{
+
+      display:grid;
+
+      grid-template-columns:
+      .8fr 1.2fr;
+
+      gap:50px;
+
+      align-items:center;
+    }
+
+
+    .location-copy{
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:22px;
+    }
+
+
+    .address-card{
+
+      padding:20px;
+
+      border-left:
+      5px solid var(--vermelho);
+
+      background:white;
+
+      border-radius:
+      0 18px 18px 0;
+
+      box-shadow:
+      0 10px 30px rgba(0,0,0,.07);
+    }
+
+
+    .address-card strong{
+
+      display:block;
+
+      font-size:1.1rem;
+
+      margin-bottom:7px;
+    }
+
+
+    .map-wrap{
+
+      height:520px;
+
+      border-radius:28px;
+
+      overflow:hidden;
+
+      border:
+      7px solid white;
+
+      box-shadow:
+      var(--sombra-forte);
+    }
+
+
+    .map-wrap iframe{
+
+      width:100%;
+
+      height:100%;
+
+      border:0;
+    }
+
+
+
+    /* =========================
+       AVALIAÇÕES
+    ========================= */
+
+
+    .reviews{
+
+      padding:
+      100px 0;
+
+      background:#111;
+
+      color:white;
+    }
+
+
+    .reviews-grid{
+
+      display:grid;
+
+      grid-template-columns:
+      1fr 1fr;
+
+      gap:60px;
+
+      align-items:center;
+    }
+
+
+    .qr-card{
+
+      max-width:410px;
+
+      margin:auto;
+
+      padding:26px;
+
+      background:white;
+
+      border-radius:28px;
+
+      box-shadow:
+      0 24px 60px rgba(0,0,0,.38);
+    }
+
+
+    .review-copy{
+
+      display:flex;
+
+      flex-direction:column;
+
+      align-items:flex-start;
+
+      gap:20px;
+    }
+
+
+    .review-copy
+    .section-text{
+
+      color:#cfcfcf;
+
+      max-width:560px;
+    }
+
+
+    .google-logo{
+
+      width:
+      min(320px,80%);
+
+      max-height:110px;
+
+      object-fit:contain;
+
+      object-position:
+      left center;
+    }
+
+
+
+    /* =========================
+       ECOMMERCE
+    ========================= */
+
+
+    .ecommerce{
+
+      padding:
+      100px 0;
+
+      background:
+
+      linear-gradient(
+        rgba(255,255,255,.9),
+        rgba(255,255,255,.9)
+      ),
+
+      url("./img/Design sem nome.png")
+      center/cover no-repeat;
+    }
+
+
+    .section-head{
+
+      max-width:800px;
+
+      margin:
+      0 auto 44px;
+
+      text-align:center;
+    }
+
+
+    .section-head
+    .section-text{
+
+      margin-top:16px;
+    }
+
+
+    .stores-grid{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(4,1fr);
+
+      gap:22px;
+    }
+
+
+    .store-card{
+
+      min-height:220px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:28px;
+
+      background:
+      rgba(255,255,255,.92);
+
+      border:
+      1px solid rgba(0,0,0,.06);
+
+      border-radius:26px;
+
+      box-shadow:
+      var(--sombra);
+
+      transition:.28s;
+
+      text-decoration:none;
+    }
+
+
+    .store-card:hover{
+
+      transform:
+      translateY(-8px);
+
+      box-shadow:
+      0 22px 48px rgba(0,0,0,.16);
+    }
+
+
+    .store-card img{
+
+      width:100%;
+
+      height:135px;
+
+      object-fit:contain;
+    }
+
+
+
+    /* =========================
+       ENTREGA
+    ========================= */
+
+
+    .delivery{
+
+      display:grid;
+
+      grid-template-columns:
+      1fr 1.1fr;
+
+      min-height:760px;
+
+      background:#f5f5f5;
+    }
+
+
+    .delivery-info{
+
+      position:relative;
+
+      overflow:hidden;
+
+      display:flex;
+
+      flex-direction:column;
+
+      align-items:center;
+
+      justify-content:center;
+
+      text-align:center;
+
+      gap:18px;
+
+      padding:
+      70px max(5vw,40px);
+
+      color:white;
+
+      background:
+
+      linear-gradient(
+        145deg,
+        #ed1b24,
+        #a6080d
+      );
+    }
+
+
+    .delivery-info::before{
+
+      content:"";
+
+      position:absolute;
+
+      width:420px;
+
+      height:420px;
+
+      border-radius:50%;
+
+      border:
+      70px solid rgba(255,255,255,.06);
+
+      top:-170px;
+
+      right:-170px;
+    }
+
+
+    .delivery-info img{
+
+      width:
+      min(330px,72%);
+
+      filter:
+      drop-shadow(
+        0 18px 30px rgba(0,0,0,.26)
+      );
+
+      position:relative;
+
+      z-index:1;
+    }
+
+
+    .delivery-info h2{
+
+      font-family:
+      "Bebas Neue",sans-serif;
+
+      font-size:
+      clamp(2.4rem,4.5vw,4.5rem);
+
+      line-height:1;
+
+      position:relative;
+
+      z-index:1;
+    }
+
+
+    .delivery-info p{
+
+      max-width:540px;
+
+      line-height:1.75;
+
+      color:
+      rgba(255,255,255,.9);
+
+      position:relative;
+
+      z-index:1;
+    }
+
+
+    .delivery-search{
+
+      display:flex;
+
+      flex-direction:column;
+
+      padding:
+      70px max(5vw,48px);
+
+      background:#f7f7f7;
+    }
+
+
+    .delivery-search h3{
+
+      font-family:
+      "Bebas Neue",sans-serif;
+
+      font-size:
+      clamp(2.8rem,4vw,4.2rem);
+    }
+
+
+    .delivery-search > p{
+
+      color:#555;
+
+      margin:
+      8px 0 24px;
+
+      line-height:1.65;
+    }
+
+
+    .search-box{
+
+      position:relative;
+
+      margin-bottom:12px;
+    }
+
+
+    .search-box input{
+
+      width:100%;
+
+      height:58px;
+
+      padding:
+      0 18px 0 50px;
+
+      border:
+      2px solid transparent;
+
+      border-radius:17px;
+
+      outline:none;
+
+      background:white;
+
+      box-shadow:
+      0 10px 28px rgba(0,0,0,.08);
+
+      transition:.2s;
+    }
+
+
+    .search-box input:focus{
+
+      border-color:
+      var(--vermelho);
+
+      box-shadow:
+      0 12px 30px rgba(216,15,20,.13);
+    }
+
+
+    .search-box::before{
+
+      content:"⌕";
+
+      position:absolute;
+
+      left:18px;
+
+      top:50%;
+
+      transform:
+      translateY(-54%);
+
+      font-size:1.7rem;
+
+      color:
+      var(--vermelho);
+
+      z-index:2;
+    }
+
+
+    .result-count{
+
+      color:#777;
+
+      font-size:.88rem;
+
+      margin-bottom:10px;
+    }
+
+
+    .table-wrap{
+
+      flex:1;
+
+      min-height:300px;
+
+      max-height:500px;
+
+      overflow:auto;
+
+      border-radius:20px;
+
+      background:white;
+
+      box-shadow:
+      var(--sombra);
+    }
+
+
+    table{
+
+      width:100%;
+
+      border-collapse:
+      collapse;
+    }
+
+
+    th{
+
+      position:sticky;
+
+      top:0;
+
+      z-index:1;
+
+      padding:
+      16px 20px;
+
+      text-align:left;
+
+      color:white;
+
+      background:
+
+      linear-gradient(
+        135deg,
+        var(--vermelho),
+        var(--vermelho-escuro)
+      );
+    }
+
+
+    td{
+
+      padding:
+      14px 20px;
+
+      border-bottom:
+      1px solid #ededed;
+
+      color:#3b3b3b;
+
+      font-size:.92rem;
+    }
+
+
+    tbody tr:hover td{
+
+      background:
+      #fff4f4;
+    }
+
+
+    mark{
+
+      background:#ffd8d9;
+
+      color:#9e090d;
+
+      border-radius:4px;
+
+      padding:1px 2px;
+    }
+
+
+    .no-result{
+
+      display:none;
+
+      padding:28px;
+
+      text-align:center;
+
+      color:#888;
+    }
+
+
+
+    /* =========================
+       MEDICAMENTOS
+    ========================= */
+
+
+    .medicines{
+
+      padding:
+      110px 0;
+
+      background:
+
+      radial-gradient(
+        circle at 90% 0,
+        rgba(216,15,20,.12),
+        transparent 28%
+      ),
+
+      white;
+    }
+
+
+    .medicine-card{
+
+      width:
+      min(100%,1000px);
+
+      margin:auto;
+
+      display:grid;
+
+      grid-template-columns:
+      1fr auto;
+
+      align-items:center;
+
+      gap:40px;
+
+      padding:48px;
+
+      border:
+      1px solid #ededed;
+
+      border-radius:30px;
+
+      background:
+      linear-gradient(
+        145deg,
+        #fff,
+        #fafafa
+      );
+
+      box-shadow:
+      var(--sombra);
+    }
+
+
+    .medicine-card p{
+
+      max-width:720px;
+
+      margin-top:15px;
+
+      color:#595959;
+
+      line-height:1.75;
+    }
+
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+
+    footer{
+
+      background:#0e0e0e;
+
+      color:white;
+
+      padding:
+      44px 0;
+    }
+
+
+    .footer-inner{
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:
+      space-between;
+
+      gap:30px;
+    }
+
+
+    .footer-brand{
+
+      font-family:
+      "Bebas Neue",sans-serif;
+
+      font-size:1.8rem;
+    }
+
+
+    .footer-info{
+
+      text-align:right;
+
+      color:#bcbcbc;
+
+      font-size:.9rem;
+
+      line-height:1.7;
+    }
+
+
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+
+    .whatsapp{
+
+      position:fixed;
+
+      right:22px;
+
+      bottom:22px;
+
+      z-index:1800;
+
+      width:64px;
+
+      height:64px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      border-radius:50%;
+
+      background:#25d366;
+
+      box-shadow:
+      0 15px 35px rgba(0,0,0,.25);
+
+      transition:.25s;
+    }
+
+
+    .whatsapp:hover{
+
+      transform:
+      translateY(-5px)
+      scale(1.04);
+    }
+
+
+    .whatsapp img{
+
+      width:100%;
+
+      height:100%;
+
+      object-fit:contain;
+    }
+
+
+
+    /* =========================
+       ANIMAÇÕES
+    ========================= */
+
+
+    .reveal{
+
+      opacity:0;
+
+      transform:
+      translateY(28px);
+
+      transition:
+      opacity .7s,
+      transform .7s;
+    }
+
+
+    .reveal.visible{
+
+      opacity:1;
+
+      transform:none;
+    }
+
+
+
+    /* =========================
+       RESPONSIVO
+    ========================= */
+
+
+    @media(max-width:900px){
+
+
+      .hamburger{
+        display:block;
+      }
+
+
+      .nav-links{
+
+        position:absolute;
+
+        left:0;
+
+        right:0;
+
+        top:84px;
+
+        display:grid;
+
+        gap:0;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        opacity:0;
+
+        background:#a50b0f;
+
+        box-shadow:
+        0 18px 30px rgba(0,0,0,.2);
+
+        transition:.3s;
+      }
+
+
+      .nav-links.open{
+
+        max-height:330px;
+
+        opacity:1;
+      }
+
+
+      .nav-links a{
+
+        padding:
+        17px 5%;
+
+        border-radius:0;
+
+        border-bottom:
+        1px solid rgba(255,255,255,.12);
+      }
+
+
+      .location-grid,
+      .reviews-grid,
+      .delivery,
+      .medicine-card{
+
+        grid-template-columns:
+        1fr;
+      }
+
+
+      .map-wrap{
+        height:430px;
+      }
+
+
+      .stores-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+      }
+
+
+      .delivery-info,
+      .delivery-search{
+
+        padding:
+        65px 7vw;
+      }
+
+
+      .medicine-card{
+
+        text-align:center;
+      }
+
+
+      .medicine-card .btn{
+
+        justify-self:center;
+      }
+
+    }
+
+
+
+    @media(max-width:600px){
+
+
+      .header-inner{
+        min-height:74px;
+      }
+
+
+      .brand img{
+
+        width:52px;
+
+        height:52px;
+      }
+
+
+      .brand-name{
+        font-size:1.4rem;
+      }
+
+
+      .nav-links{
+        top:74px;
+      }
+
+
+      .carousel{
+        height:330px;
+      }
+
+
+      .carousel-control{
+
+        width:40px;
+
+        height:40px;
+
+        font-size:1.2rem;
+      }
+
+
+      .prev{
+        left:10px;
+      }
+
+
+      .next{
+        right:10px;
+      }
+
+
+      .brand-card{
+
+        width:118px;
+
+        height:90px;
+
+        padding:15px;
+      }
+
+
+      .location-section,
+      .reviews,
+      .ecommerce,
+      .medicines{
+
+        padding:
+        72px 0;
+      }
+
+
+      .map-wrap{
+
+        height:340px;
+
+        border-width:4px;
+      }
+
+
+      .reviews-grid{
+        gap:36px;
+      }
+
+
+      .review-copy{
+
+        align-items:center;
+
+        text-align:center;
+      }
+
+
+      .google-logo{
+
+        object-position:center;
+      }
+
+
+      .stores-grid{
+        gap:14px;
+      }
+
+
+      .store-card{
+
+        min-height:150px;
+
+        padding:18px;
+
+        border-radius:20px;
+      }
+
+
+      .store-card img{
+        height:95px;
+      }
+
+
+      .delivery-info,
+      .delivery-search{
+
+        padding:
+        55px 6vw;
+      }
+
+
+      .medicine-card{
+
+        padding:
+        30px 22px;
+
+        border-radius:24px;
+      }
+
+
+      .footer-inner{
+
+        flex-direction:column;
+
+        text-align:center;
+      }
+
+
+      .footer-info{
+        text-align:center;
+      }
+
+
+      .whatsapp{
+
+        width:56px;
+
+        height:56px;
+
+        right:16px;
+
+        bottom:16px;
+      }
+
+    }
+
+
+  
+
+    /* =========================
+       JOGO - SALSICHA SNACK
+    ========================= */
+
+    .dog-game-section{
+      padding:88px 0;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(216,15,20,.16), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255,188,62,.14), transparent 28%),
+        #111;
+      color:#fff;
+      overflow:hidden;
+    }
+
+    .dog-game-grid{
+      display:grid;
+      grid-template-columns:minmax(0,.8fr) minmax(380px,1.2fr);
+      gap:48px;
+      align-items:center;
+    }
+
+    .dog-game-copy .tag{
+      background:rgba(255,255,255,.1);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .dog-game-copy .section-title{
+      margin:16px 0 18px;
+      max-width:620px;
+    }
+
+    .dog-game-copy p{
+      color:rgba(255,255,255,.72);
+      line-height:1.8;
+      max-width:560px;
+    }
+
+    .game-instructions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px;
+    }
+
+    .game-key{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:38px;
+      padding:0 13px;
+      border-radius:12px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+      color:#fff;
+      font-size:.86rem;
+      font-weight:700;
+    }
+
+    .game-card{
+      position:relative;
+      padding:18px;
+      border-radius:30px;
+      background:linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:0 30px 80px rgba(0,0,0,.34);
+      backdrop-filter:blur(12px);
+    }
+
+    .game-topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .game-score{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+    }
+
+    .game-score strong{
+      display:inline-grid;
+      place-items:center;
+      min-width:48px;
+      height:38px;
+      padding:0 10px;
+      border-radius:12px;
+      background:var(--vermelho);
+      box-shadow:0 8px 20px rgba(216,15,20,.32);
+    }
+
+    .game-reset{
+      border:0;
+      color:#fff;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      min-height:38px;
+      padding:0 14px;
+      cursor:pointer;
+      font-weight:800;
+      transition:.2s;
+    }
+
+    .game-reset:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.16);
+    }
+
+    .game-actions{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .game-customize{
+      border:1px solid rgba(255,255,255,.16);
+      color:#fff;
+      background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.07));
+      border-radius:12px;
+      min-height:38px;
+      padding:0 14px;
+      cursor:pointer;
+      font-weight:800;
+      transition:.2s;
+    }
+
+    .game-customize:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.18);
+    }
+
+    .dog-customizer{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:10px;
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      transform:translateY(-6px);
+      transition:max-height .28s ease,opacity .2s ease,transform .2s ease,margin .28s ease;
+      margin:0;
+    }
+
+    .dog-customizer.open{
+      max-height:420px;
+      opacity:1;
+      transform:none;
+      margin:0 0 14px;
+    }
+
+    .dog-option{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+      padding:10px;
+      border-radius:14px;
+      background:rgba(255,255,255,.075);
+      border:1px solid rgba(255,255,255,.1);
+      min-width:0;
+    }
+
+    .dog-option label{
+      color:rgba(255,255,255,.72);
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .dog-option input[type="color"]{
+      width:100%;
+      height:38px;
+      padding:3px;
+      border:0;
+      border-radius:10px;
+      background:rgba(255,255,255,.12);
+      cursor:pointer;
+    }
+
+    .dog-option select{
+      width:100%;
+      min-height:38px;
+      border:0;
+      outline:0;
+      border-radius:10px;
+      padding:0 9px;
+      color:#111;
+      background:#fff;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .dog-preview{
+      grid-column:span 2;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.075);
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .dog-preview-mini{
+      display:flex;
+      align-items:center;
+      gap:0;
+      min-width:116px;
+      justify-content:flex-end;
+    }
+
+    .dog-preview-body{
+      width:62px;
+      height:24px;
+      border-radius:14px 8px 8px 14px;
+      background:var(--preview-body,#a95e2d);
+      position:relative;
+    }
+
+    .dog-preview-head{
+      width:35px;
+      height:31px;
+      margin-left:-3px;
+      border-radius:48% 58% 52% 48%;
+      background:var(--preview-head,#a95e2d);
+      position:relative;
+      box-shadow:inset -8px 0 0 rgba(255,255,255,.05);
+    }
+
+    .dog-preview-head:before{
+      content:"";
+      position:absolute;
+      width:12px;
+      height:20px;
+      left:1px;
+      top:18px;
+      border-radius:70% 30% 70% 50%;
+      background:var(--preview-ear,#603016);
+      transform:rotate(22deg);
+    }
+
+    .dog-preview-head:after{
+      content:"";
+      position:absolute;
+      width:5px;
+      height:5px;
+      right:5px;
+      top:8px;
+      border-radius:50%;
+      background:#111;
+    }
+
+    .dog-randomize{
+      border:0;
+      min-height:36px;
+      padding:0 11px;
+      border-radius:10px;
+      color:#fff;
+      background:var(--vermelho);
+      font-weight:900;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    .game-stage{
+      position:relative;
+      width:100%;
+      aspect-ratio:1 / 1;
+      max-height:540px;
+      border-radius:22px;
+      overflow:hidden;
+      background:#f3d9a4;
+      border:5px solid #fff;
+      box-shadow:inset 0 0 0 2px rgba(0,0,0,.08);
+      touch-action:none;
+    }
+
+    #salsichaGame{
+      display:block;
+      width:100%;
+      height:100%;
+    }
+
+    .game-overlay{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      background:rgba(17,17,17,.62);
+      backdrop-filter:blur(5px);
+      transition:.2s;
+    }
+
+    .game-overlay.hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+
+    .game-overlay-box{
+      width:min(92%,360px);
+      text-align:center;
+      padding:26px 22px;
+      border-radius:22px;
+      background:rgba(255,255,255,.96);
+      color:#111;
+      box-shadow:0 22px 60px rgba(0,0,0,.28);
+    }
+
+    .game-dog-icon{
+      font-size:3rem;
+      line-height:1;
+      margin-bottom:10px;
+    }
+
+    .game-overlay-box h3{
+      font-family:"Bebas Neue",sans-serif;
+      font-size:2.2rem;
+      line-height:1;
+      margin-bottom:8px;
+    }
+
+    .game-overlay-box p{
+      color:#666;
+      line-height:1.55;
+      margin-bottom:16px;
+      font-size:.92rem;
+    }
+
+    .game-start{
+      border:0;
+      min-height:46px;
+      padding:0 20px;
+      border-radius:14px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--vermelho-claro),var(--vermelho-escuro));
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 10px 24px rgba(216,15,20,.28);
+    }
+
+    .mobile-controls{
+      display:none;
+      grid-template-columns:repeat(3,58px);
+      grid-template-rows:repeat(2,50px);
+      justify-content:center;
+      gap:8px;
+      margin-top:14px;
+      user-select:none;
+    }
+
+    .game-dir{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.1);
+      color:#fff;
+      border-radius:14px;
+      font-size:1.2rem;
+      font-weight:900;
+      cursor:pointer;
+      touch-action:manipulation;
+    }
+
+    .game-dir:active{
+      transform:scale(.96);
+      background:rgba(255,255,255,.18);
+    }
+
+    .game-dir.up{grid-column:2;grid-row:1;}
+    .game-dir.left{grid-column:1;grid-row:2;}
+    .game-dir.down{grid-column:2;grid-row:2;}
+    .game-dir.right{grid-column:3;grid-row:2;}
+
+    @media (max-width:900px){
+      .dog-game-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .dog-game-copy{
+        text-align:center;
+      }
+
+      .dog-game-copy .section-title,
+      .dog-game-copy p{
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      .dog-game-copy .tag{
+        margin:auto;
+      }
+
+      .game-instructions{
+        justify-content:center;
+      }
+    }
+
+    @media (max-width:680px){
+      .dog-game-section{
+        padding:64px 0;
+      }
+
+      .game-card{
+        padding:12px;
+        border-radius:24px;
+      }
+
+      .game-stage{
+        border-width:4px;
+        border-radius:18px;
+      }
+
+      .mobile-controls{
+        display:grid;
+      }
+
+      .game-instructions .desktop-only{
+        display:none;
+      }
+
+      .game-topbar{
+        align-items:flex-start;
+      }
+
+      .game-actions{
+        max-width:210px;
+      }
+
+      .dog-customizer{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .dog-preview{
+        grid-column:1 / -1;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+  <div class="header-inner">
+
+
+    <a href="#inicio" class="brand">
+
+      <img
+      src="./img/images.jpg"
+      alt="Logo Casa do Sitiante">
+
+      <span class="brand-name">
+        Casa do Sitiante
+      </span>
+
+    </a>
+
+
+    <nav
+    class="nav-links"
+    id="navLinks">
+
+      <a href="./sobre-nos.html">
+        Sobre nós
+      </a>
+
+      <a href="./medicamentos-zenrelia.html">
+        Medicamentos
+      </a>
+
+      <a href="./Contato.html">
+        Contato
+      </a>
+
+      <a href="#joguinho">
+        Joguinho
+      </a>
+
+      <a href="#localizacao">
+        Localização
+      </a>
+
+    </nav>
+
+
+    <button
+    class="hamburger"
+    id="hamburger"
+    aria-label="Abrir menu">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+
+<!-- CARROSSEL -->
+
+<section
+class="hero"
+id="inicio">
+
+
+  <div
+  class="carousel"
+  id="carousel">
+
+
+    <div class="slides">
+
+      <img
+      src="./img/foto.png"
+      alt="Casa do Sitiante">
+
+      <img
+      src="./img/bbb (1).jpeg"
+      alt="Produtos Casa do Sitiante">
+
+      <img
+      src="./img/bbb (2).jpeg"
+      alt="Ofertas Casa do Sitiante">
+
+    </div>
+
+
+    <button
+    class="carousel-control prev">
+
+      &#10094;
+
+    </button>
+
+
+    <button
+    class="carousel-control next">
+
+      &#10095;
+
+    </button>
+
+
+    <div class="dots"></div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- MARCAS -->
+
+
+<section class="brands">
+
+
+  <div class="brands-track">
+
+
+    <div class="brand-card">
+      <img src="./img/stihl.png">
+    </div>
+
+
+    <div class="brand-card">
+      <img src="./img/sd.png">
+    </div>
+
+
+    <div class="brand-card">
+      <img src="./img/genco.png">
+    </div>
+
+
+    <div class="brand-card">
+      <img src="./img/hth-logo-circular.png">
+    </div>
+
+
+    <div class="brand-card">
+
+      <img
+      src="./img/goldenlogo181224n-removebg-preview.png">
+
+    </div>
+
+
+    <div class="brand-card">
+
+      <img
+      src="./img/tramontina-logo-png_seeklogo-244087.png">
+
+    </div>
+
+
+    <div class="brand-card">
+
+      <img
+      src="./img/magnus-racoes-logo-png_seeklogo-284090.png">
+
+    </div>
+
+
+
+    <!-- REPETIÇÃO PARA O LOOP -->
+
+
+    <div class="brand-card">
+      <img src="./img/stihl.png">
+    </div>
+
+
+    <div class="brand-card">
+      <img src="./img/sd.png">
+    </div>
+
+
+    <div class="brand-card">
+      <img src="./img/genco.png">
+    </div>
+
+
+    <div class="brand-card">
+      <img src="./img/hth-logo-circular.png">
+    </div>
+
+
+    <div class="brand-card">
+
+      <img
+      src="./img/goldenlogo181224n-removebg-preview.png">
+
+    </div>
+
+
+    <div class="brand-card">
+
+      <img
+      src="./img/tramontina-logo-png_seeklogo-244087.png">
+
+    </div>
+
+
+    <div class="brand-card">
+
+      <img
+      src="./img/magnus-racoes-logo-png_seeklogo-284090.png">
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- LOCALIZAÇÃO -->
+
+
+<section
+class="location-section"
+id="localizacao">
+
+
+  <div
+  class="container location-grid">
+
+
+    <div
+    class="location-copy reveal">
+
+
+      <span class="tag">
+        Nossa loja
+      </span>
+
+
+      <h1 class="section-title">
+        Onde estamos
+      </h1>
+
+
+      <p class="section-text">
+
+        Venha conhecer a Casa do Sitiante e encontre produtos para o seu pet, jardim, piscinas, ferramentas e muito mais.
+
+      </p>
+
+
+      <div class="address-card">
+
+
+        <strong>
+          Casa do Sitiante
+        </strong>
+
+
+        Rua Adherbal da Costa Moreira, 360
+
+        <br>
+
+        Campo Limpo Paulista, SP
+
+
+      </div>
+
+
+      <div>
+
+
+        <a
+        class="btn btn-primary"
+        href="https://www.google.com/maps/search/?api=1&query=Rua+Adherbal+da+Costa+Moreira,+360"
+        target="_blank">
+
+          Abrir no Maps
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div
+    class="map-wrap reveal">
+
+
+      <iframe
+
+      src="https://www.google.com/maps?q=Rua+Adherbal+da+Costa+Moreira,+360&output=embed"
+
+      loading="lazy"
+
+      allowfullscreen>
+
+      </iframe>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- AVALIAÇÕES -->
+
+
+<section class="reviews">
+
+
+  <div
+  class="container reviews-grid">
+
+
+    <div
+    class="qr-card reveal">
+
+
+      <img
+
+      src="./img/qr_code_avaliacao_google.png"
+
+      alt="QR Code avaliação Google">
+
+
+    </div>
+
+
+
+    <div
+    class="review-copy reveal">
+
+
+      <span class="tag">
+
+        Sua opinião importa
+
+      </span>
+
+
+      <h2 class="section-title">
+
+        Nos avalie no Google
+
+      </h2>
+
+
+      <p class="section-text">
+
+        Sua avaliação ajuda outras pessoas a conhecerem nosso atendimento e também nos ajuda a melhorar cada vez mais.
+
+      </p>
+
+
+      <img
+
+      src="./img/google.png"
+
+      class="google-logo"
+
+      alt="Google">
+
+
+      <a
+
+      class="btn btn-primary"
+
+      href="https://g.page/r/Ca8ztVBoniGOEBM/review"
+
+      target="_blank">
+
+        Avaliar agora
+
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- ECOMMERCE -->
+
+
+<section class="ecommerce">
+
+
+  <div class="container">
+
+
+    <div
+    class="section-head reveal">
+
+
+      <span class="tag">
+
+        Praticidade
+
+      </span>
+
+
+      <h2 class="section-title">
+
+        Compre online
+
+      </h2>
+
+
+      <p class="section-text">
+
+        Também estamos presentes nos principais marketplaces. Escolha sua plataforma preferida e encontre nossos produtos com praticidade.
+
+      </p>
+
+
+    </div>
+
+
+
+    <div class="stores-grid">
+
+
+      <a
+
+      class="store-card reveal"
+
+      href="https://www.mercadolivre.com.br/pagina/sitypet"
+
+      target="_blank">
+
+
+        <img
+
+        src="./img/mercado (2).png"
+
+        alt="Mercado Livre">
+
+
+      </a>
+
+
+
+      <a
+
+      class="store-card reveal"
+
+      href="https://shopee.com.br/sitypet"
+
+      target="_blank">
+
+
+        <img
+
+        src="./img/shope.png"
+
+        alt="Shopee">
+
+
+      </a>
+
+
+
+      <a
+
+      class="store-card reveal"
+
+      href="https://www.ifood.com.br/delivery/campo-limpo-paulista-sp/casa-do-sitiante---agro--pet-jardim-america/f0e5826f-8539-40eb-a479-f77072ced2c9"
+
+      target="_blank">
+
+
+        <img
+
+        src="./img/ifood.png"
+
+        alt="iFood">
+
+
+      </a>
+
+
+
+      <a
+
+      class="store-card reveal"
+
+      href="https://www.amazon.com.br/shops/sitypet"
+
+      target="_blank">
+
+
+        <img
+
+        src="./img/amazon.png"
+
+        alt="Amazon">
+
+
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+
+
+<!-- JOGUINHO -->
+
+<section class="dog-game-section" id="joguinho">
+  <div class="container dog-game-grid">
+
+    <div class="dog-game-copy reveal">
+      <span class="tag">Diversão no Sitiante</span>
+      <h2 class="section-title">Salsicha Snack</h2>
+      <p>
+        Ajude o cachorrinho salsicha a comer toda a ração sem bater nas bordas nem no próprio corpo. Quanto mais ele come, mais comprido fica!
+      </p>
+
+      <div class="game-instructions">
+        <span class="game-key desktop-only">⌨️ Setas ou WASD</span>
+        <span class="game-key">🍖 Pegue a ração</span>
+        <span class="game-key">🏆 Bata seu recorde</span>
+      </div>
+    </div>
+
+    <div class="game-card reveal">
+      <div class="game-topbar">
+        <div class="game-score">Pontos <strong id="gameScore">0</strong></div>
+        <div class="game-actions">
+          <button class="game-customize" id="gameCustomize" type="button" aria-expanded="false">🎨 Personalizar</button>
+          <button class="game-reset" id="gameReset" type="button">Reiniciar</button>
+        </div>
+      </div>
+
+      <div class="dog-customizer" id="dogCustomizer" aria-label="Personalização do cachorro">
+        <div class="dog-option">
+          <label for="dogBodyColor">Cor do corpo</label>
+          <input type="color" id="dogBodyColor" value="#a95e2d">
+        </div>
+        <div class="dog-option">
+          <label for="dogHeadColor">Cor da cabeça</label>
+          <input type="color" id="dogHeadColor" value="#a95e2d">
+        </div>
+        <div class="dog-option">
+          <label for="dogEarColor">Cor das orelhas</label>
+          <input type="color" id="dogEarColor" value="#603016">
+        </div>
+        <div class="dog-option">
+          <label for="dogMuzzleColor">Cor do focinho</label>
+          <input type="color" id="dogMuzzleColor" value="#d58a4c">
+        </div>
+        <div class="dog-option">
+          <label for="dogHeadStyle">Cabeça</label>
+          <select id="dogHeadStyle">
+            <option value="classic">Clássica</option>
+            <option value="round">Redondinha</option>
+            <option value="long">Focinho longo</option>
+          </select>
+        </div>
+        <div class="dog-option">
+          <label for="dogPattern">Pelagem</label>
+          <select id="dogPattern">
+            <option value="solid">Lisa</option>
+            <option value="spots">Manchinhas</option>
+            <option value="stripe">Faixa nas costas</option>
+          </select>
+        </div>
+        <div class="dog-preview">
+          <div>
+            <strong>Seu salsicha</strong>
+            <div style="font-size:.74rem;color:rgba(255,255,255,.62);margin-top:2px">As escolhas ficam salvas.</div>
+          </div>
+          <div class="dog-preview-mini" id="dogPreviewMini">
+            <span class="dog-preview-body"></span><span class="dog-preview-head"></span>
+          </div>
+          <button class="dog-randomize" id="dogRandomize" type="button">Surpresa ✨</button>
+        </div>
+      </div>
+
+      <div class="game-stage" id="gameStage">
+        <canvas id="salsichaGame" width="600" height="600" aria-label="Jogo do cachorro salsicha"></canvas>
+
+        <div class="game-overlay" id="gameOverlay">
+          <div class="game-overlay-box">
+            <div class="game-dog-icon">🐶</div>
+            <h3 id="gameOverlayTitle">Salsicha Snack</h3>
+            <p id="gameOverlayText">Coma a ração, cresça e tente fazer o maior número de pontos.</p>
+            <button class="game-start" id="gameStart" type="button">Jogar agora</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-controls" aria-label="Controles do jogo">
+        <button class="game-dir up" data-dir="up" type="button" aria-label="Cima">▲</button>
+        <button class="game-dir left" data-dir="left" type="button" aria-label="Esquerda">◀</button>
+        <button class="game-dir down" data-dir="down" type="button" aria-label="Baixo">▼</button>
+        <button class="game-dir right" data-dir="right" type="button" aria-label="Direita">▶</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ENTREGA -->
+
+
+<section
+class="delivery"
+id="entrega">
+
+
+  <div
+  class="delivery-info reveal">
+
+
+    <img
+
+    src="./img/Motoboy.png"
+
+    alt="Entrega">
+
+
+    <h2>
+
+      Entregamos em Campo Limpo Paulista e região!
+
+    </h2>
+
+
+    <p>
+
+      Levamos seu pedido até você com rapidez e segurança.
+
+      Atendemos Campo Limpo Paulista, Jarinu, Jundiaí, Várzea Paulista e diversos bairros da região.
+
+    </p>
+
+
+  </div>
+
+
+
+  <div
+  class="delivery-search reveal">
+
+
+    <span class="tag">
+
+      Consulte sua região
+
+    </span>
+
+
+    <h3>
+
+      Entrega
+
+    </h3>
+
+
+    <p>
+
+      Digite o nome do seu bairro para conferir se ele está na nossa lista de atendimento.
+
+    </p>
+
+
+    <div class="search-box">
+
+
+      <input
+
+      type="text"
+
+      id="busca-bairro"
+
+      placeholder="Digite o bairro..."
+
+      autocomplete="off">
+
+
+    </div>
+
+
+    <div
+    class="result-count"
+    id="contador">
+
+    </div>
+
+
+
+    <div class="table-wrap">
+
+
+      <table>
+
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Bairro / Região
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody
+        id="corpo-tabela">
+
+        </tbody>
+
+
+      </table>
+
+
+      <div
+      class="no-result"
+      id="sem-resultado">
+
+        Nenhum bairro encontrado.
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- MEDICAMENTOS -->
+
+
+<section class="medicines">
+
+
+  <div class="container">
+
+
+    <div
+    class="medicine-card reveal">
+
+
+      <div>
+
+
+        <span class="tag">
+
+          Saúde animal
+
+        </span>
+
+
+        <h2 class="section-title">
+
+          Medicamentos para o seu pet
+
+        </h2>
+
+
+        <p>
+
+          Veja as linhas de medicamentos veterinários que trabalhamos, com destaque para o Zenrelia — tratamento diário para coceira alérgica em cães.
+
+        </p>
+
+
+      </div>
+
+
+      <a
+
+      href="./medicamentos-zenrelia.html"
+
+      class="btn btn-primary">
+
+        Ver medicamentos
+
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+</main>
+
+
+
+<!-- WHATSAPP -->
+
+
+<a
+
+class="whatsapp"
+
+href="https://wa.me/5511942424409"
+
+target="_blank">
+
+
+  <img
+
+  src="./img/zap.png"
+
+  alt="WhatsApp">
+
+
+</a>
+
+
+
+<!-- FOOTER -->
+
+
+<footer>
+
+
+  <div
+  class="container footer-inner">
+
+
+    <div class="footer-brand">
+
+      Casa do Sitiante
+
+    </div>
+
+
+    <div class="footer-info">
+
+
+      <p>
+
+        Rua Adherbal da Costa Moreira, 360 — Campo Limpo Paulista, SP
+
+      </p>
+
+
+      <p>
+
+        Casa do Sitiante ©
+
+        <span id="ano"></span>
+
+      </p>
+
+
+    </div>
+
+
+  </div>
+
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   MENU
+========================= */
+
+
+const hamburger =
+document.getElementById("hamburger");
+
+
+const navLinks =
+document.getElementById("navLinks");
+
+
+hamburger.addEventListener(
+"click",
+()=>{
+
+
+  const aberto =
+  navLinks.classList.toggle("open");
+
+
+  hamburger.classList.toggle(
+    "open",
+    aberto
+  );
+
+
+});
+
+
+navLinks
+.querySelectorAll("a")
+.forEach(link=>{
+
+
+  link.addEventListener(
+  "click",
+  ()=>{
+
+
+    navLinks.classList.remove(
+      "open"
+    );
+
+
+    hamburger.classList.remove(
+      "open"
+    );
+
+
+  });
+
+
+});
+
+
+
+/* =========================
+   CARROSSEL
+========================= */
+
+
+const carousel =
+document.getElementById("carousel");
+
+
+const slides =
+carousel.querySelector(".slides");
+
+
+const imagens =
+carousel.querySelectorAll(
+".slides img"
+);
+
+
+const anterior =
+carousel.querySelector(".prev");
+
+
+const proximo =
+carousel.querySelector(".next");
+
+
+const dotsContainer =
+carousel.querySelector(".dots");
+
+
+let slideAtual = 0;
+
+
+let autoplay;
+
+
+
+imagens.forEach(
+(_,index)=>{
+
+
+  const dot =
+  document.createElement(
+    "button"
+  );
+
+
+  dot.className =
+  "dot";
+
+
+  if(index === 0){
+
+    dot.classList.add(
+      "active"
+    );
+
+  }
+
+
+  dot.addEventListener(
+  "click",
+  ()=>{
+
+
+    slideAtual =
+    index;
+
+
+    atualizarCarousel();
+
+
+    iniciarAutoplay();
+
+
+  });
+
+
+  dotsContainer.appendChild(
+    dot
+  );
+
+
+});
+
+
+
+const dots =
+dotsContainer
+.querySelectorAll(".dot");
+
+
+
+function atualizarCarousel(){
+
+
+  slides.style.transform =
+  `translateX(-${slideAtual * 100}%)`;
+
+
+  dots.forEach(
+  (dot,index)=>{
+
+
+    dot.classList.toggle(
+      "active",
+      index === slideAtual
+    );
+
+
+  });
+
+
+}
+
+
+
+function irProximo(){
+
+
+  slideAtual =
+  (slideAtual + 1)
+  % imagens.length;
+
+
+  atualizarCarousel();
+
+
+}
+
+
+
+function irAnterior(){
+
+
+  slideAtual =
+  (
+    slideAtual
+    - 1
+    + imagens.length
+  )
+  %
+  imagens.length;
+
+
+  atualizarCarousel();
+
+
+}
+
+
+
+function iniciarAutoplay(){
+
+
+  clearInterval(
+    autoplay
+  );
+
+
+  autoplay =
+  setInterval(
+    irProximo,
+    4500
+  );
+
+
+}
+
+
+
+proximo.addEventListener(
+"click",
+()=>{
+
+
+  irProximo();
+
+
+  iniciarAutoplay();
+
+
+});
+
+
+anterior.addEventListener(
+"click",
+()=>{
+
+
+  irAnterior();
+
+
+  iniciarAutoplay();
+
+
+});
+
+
+iniciarAutoplay();
+
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+
+const elementosReveal =
+document.querySelectorAll(
+".reveal"
+);
+
+
+const observer =
+new IntersectionObserver(
+entries=>{
+
+
+  entries.forEach(
+  entry=>{
+
+
+    if(
+      entry.isIntersecting
+    ){
+
+
+      entry.target
+      .classList
+      .add("visible");
+
+
+      observer.unobserve(
+        entry.target
+      );
+
+
+    }
+
+
+  });
+
+
+},
+{
+
+  threshold:.12
+
+});
+
+
+elementosReveal.forEach(
+elemento=>{
+
+
+  observer.observe(
+    elemento
+  );
+
+
+});
+
+
+
+/* =========================
+   LISTA DE BAIRROS
+========================= */
+
+
+const bairros = [
+
+"ADHERBAL DA COSTA MOREIRA",
+
+"CAMBARAH COND JARINU",
+
+"CONDOMÍNIO LAGOS DE JARINÚ",
+
+"FRANCO DA ROCHA/FRANCISCO MORATO",
+
+"JARINU",
+
+"JD AMERICA",
+
+"JD BOTHANICA JARINU (IARA)",
+
+"JD BOTUJURÚ",
+
+"JD BRASÍLIA",
+
+"JD CAFELANDIA",
+
+"JD CALIFÓRNIA",
+
+"JD CAMPO LIMPO",
+
+"JD CAMPO VERDE",
+
+"JD CAMPO VERDE (PONTO DA PEDRA)",
+
+"JD CHACARA NOVA GERMANIA",
+
+"JD CHACARA SANTA MARTA",
+
+"JD CHACRINHA",
+
+"JD CHAMPS PRIVE",
+
+"JD COLINA DO PONTAL",
+
+"JD CONDOMINIO CAMBARAH",
+
+"JD CORCOVADO",
+
+"JD DAS ACACIAS",
+
+"JD DAS PALMEIRAS",
+
+"JD ESTANCIA SÃO PAULO (PAU ARCADO)",
+
+"JD ESTRADA DO ROSSI",
+
+"JD EUROPA",
+
+"JD FELICIDADE",
+
+"JD FIGUEIRA BRANCA",
+
+"JD FIRENZE",
+
+"JD GRAMADO SANTA RITA",
+
+"JD GUANCIALE",
+
+"JD IARA (ATIBAIA)",
+
+"JD IRAMAIA (SENTIDO JD LAURA)",
+
+"JD IVOTURUCAIA",
+
+"JD LAGOA BRANCA",
+
+"JD LAURA",
+
+"JD LOJA DA CHINA",
+
+"JD MARACANA",
+
+"JD MARCHETTI",
+
+"JD MARAJOARA",
+
+"JD MARSOLA",
+
+"JD MOINHO",
+
+"JD MONTE ALEGRE",
+
+"JD NOVO HAMBURGO",
+
+"JD OUT. DAS PAINEIRAS",
+
+"JD PARQUE NIAGUARA",
+
+"JD PARQUE SANTANA",
+
+"JD PAU ARCADO",
+
+"JD PAULISTA (HIDROACAO)",
+
+"JD PAULISTA 2 (CX DA AGUA)",
+
+"JD POUSADA DO MARK",
+
+"JD PQ INTERNACIONAL",
+
+"JD PQ LOJA DA CHINA",
+
+"JD PROMECA",
+
+"JD SAINT JAIMES I E II",
+
+"JD SANTA BRANCA",
+
+"JD SANTA CATARINA",
+
+"JD SANTA ISABEL",
+
+"JD SANTA LUCIA",
+
+"JD SANTA MARIA",
+
+"JD SANTHIAGO",
+
+"JD SANTO ANTONIO II",
+
+"JD SANTO ANTONIO I",
+
+"JD SAO CONRADO",
+
+"JD SAO DOMINGOS",
+
+"JD SAO JOSE I E II",
+
+"JD SOARES",
+
+"JD SOLANGE",
+
+"JD TIMBARA",
+
+"JD VALE ESMERALDA",
+
+"JD VERA REGINA",
+
+"JD VILA CARDOSO",
+
+"JD VILA CONSTANCIA",
+
+"JD VILA DA CONQUISTA",
+
+"JD VILA IMAPE",
+
+"JD VILA IPE",
+
+"JD VILA MARIETA (VILA IPE)",
+
+"JD VILA OLIMPIA",
+
+"JD VILA SAO PAULO",
+
+"JD VILA TAVARES / CENTRO",
+
+"JD VILA THOMAZINA",
+
+"JD VISTA ALEGRE",
+
+"JD VITORIA",
+
+"JD YARA",
+
+"JUNDIAI",
+
+"SEDEX",
+
+"VARZEA PAULISTA"
+
+];
+
+
+
+const inputBairro =
+document.getElementById(
+"busca-bairro"
+);
+
+
+const corpoTabela =
+document.getElementById(
+"corpo-tabela"
+);
+
+
+const contador =
+document.getElementById(
+"contador"
+);
+
+
+const semResultado =
+document.getElementById(
+"sem-resultado"
+);
+
+
+
+function escaparRegex(texto){
+
+
+  return texto.replace(
+
+    /[.*+?^${}()|[\]\\]/g,
+
+    "\\$&"
+
+  );
+
+
+}
+
+
+
+function renderizarBairros(
+lista,
+termo=""
+){
+
+
+  corpoTabela.innerHTML =
+  "";
+  lista.forEach(
+  nome=>{
+    const linha =
+    document.createElement(
+      "tr"
+    );
+    const coluna =
+    document.createElement(
+      "td"
+    );
+    if(termo){
+      const regex =
+      new RegExp(
+
+        `(${escaparRegex(termo)})`,
+
+        "gi"
+
+      );
+      coluna.innerHTML =
+      nome.replace(
+
+        regex,
+
+        "<mark>$1</mark>"
+
+      );
+    }
+    else{
+      coluna.textContent =
+      nome;
+    }
+    linha.appendChild(
+      coluna
+    );
+    corpoTabela.appendChild(
+      linha
+    );
+
+
+  });
+  contador.textContent =
+  `${lista.length} bairro${
+    lista.length === 1
+    ? ""
+    : "s"
+  } encontrado${
+    lista.length === 1
+    ? ""
+    : "s"
+  }`;
+semResultado.style.display =lista.length? "none": "block";}
+
+inputBairro.addEventListener(
+"input",
+()=>{
+
+
+  const termo =
+  inputBairro
+  .value
+  .trim();
+
+
+  const pesquisa =
+  termo
+  .toLocaleLowerCase(
+    "pt-BR"
+  );
+
+
+  const filtrados =
+  bairros.filter(
+  nome=>{
+
+
+    return nome
+
+    .toLocaleLowerCase(
+      "pt-BR"
+    )
+
+    .includes(
+      pesquisa
+    );
+
+
+  });
+
+
+  renderizarBairros(
+
+    filtrados,
+    termo
+
+  );
+});
+renderizarBairros(
+bairros
+);
+
+
+/* =========================
+   ANO
+========================= */
+
+document
+.getElementById("ano")
+.textContent =
+new Date().getFullYear();
+</script>
+
+
+<script>
+(() => {
+  const canvas = document.getElementById('salsichaGame');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.getElementById('gameScore');
+  const overlay = document.getElementById('gameOverlay');
+  const overlayTitle = document.getElementById('gameOverlayTitle');
+  const overlayText = document.getElementById('gameOverlayText');
+  const startBtn = document.getElementById('gameStart');
+  const resetBtn = document.getElementById('gameReset');
+  const stage = document.getElementById('gameStage');
+  const customizeBtn = document.getElementById('gameCustomize');
+  const customizer = document.getElementById('dogCustomizer');
+  const bodyColorInput = document.getElementById('dogBodyColor');
+  const headColorInput = document.getElementById('dogHeadColor');
+  const earColorInput = document.getElementById('dogEarColor');
+  const muzzleColorInput = document.getElementById('dogMuzzleColor');
+  const headStyleInput = document.getElementById('dogHeadStyle');
+  const patternInput = document.getElementById('dogPattern');
+  const randomizeBtn = document.getElementById('dogRandomize');
+  const previewMini = document.getElementById('dogPreviewMini');
+
+  const defaultDogStyle = {
+    body:'#a95e2d',
+    head:'#a95e2d',
+    ear:'#603016',
+    muzzle:'#d58a4c',
+    headStyle:'classic',
+    pattern:'solid'
+  };
+
+  let dogStyle = {...defaultDogStyle};
+
+  function loadDogStyle(){
+    try {
+      const saved = JSON.parse(localStorage.getItem('casaDoSitianteDogStyle') || '{}');
+      dogStyle = {...defaultDogStyle,...saved};
+    } catch (_) {
+      dogStyle = {...defaultDogStyle};
+    }
+    bodyColorInput.value = dogStyle.body;
+    headColorInput.value = dogStyle.head;
+    earColorInput.value = dogStyle.ear;
+    muzzleColorInput.value = dogStyle.muzzle;
+    headStyleInput.value = dogStyle.headStyle;
+    patternInput.value = dogStyle.pattern;
+    updateDogPreview();
+  }
+
+  function saveDogStyle(){
+    try {
+      localStorage.setItem('casaDoSitianteDogStyle', JSON.stringify(dogStyle));
+    } catch (_) {}
+  }
+
+  function updateDogPreview(){
+    if (!previewMini) return;
+    previewMini.style.setProperty('--preview-body', dogStyle.body);
+    previewMini.style.setProperty('--preview-head', dogStyle.head);
+    previewMini.style.setProperty('--preview-ear', dogStyle.ear);
+  }
+
+  function syncDogStyle(){
+    dogStyle = {
+      body:bodyColorInput.value,
+      head:headColorInput.value,
+      ear:earColorInput.value,
+      muzzle:muzzleColorInput.value,
+      headStyle:headStyleInput.value,
+      pattern:patternInput.value
+    };
+    saveDogStyle();
+    updateDogPreview();
+    draw();
+  }
+
+  const grid = 20;
+  const cells = 20;
+  let dog, food, direction, nextDirection, score, timer, running = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  function resetState(){
+    dog = [
+      {x:8,y:10},
+      {x:7,y:10},
+      {x:6,y:10},
+      {x:5,y:10}
+    ];
+    direction = {x:1,y:0};
+    nextDirection = {x:1,y:0};
+    score = 0;
+    scoreEl.textContent = score;
+    placeFood();
+    draw();
+  }
+
+  function placeFood(){
+    do {
+      food = {
+        x: Math.floor(Math.random()*cells),
+        y: Math.floor(Math.random()*cells)
+      };
+    } while (dog && dog.some(part => part.x === food.x && part.y === food.y));
+  }
+
+  function setDirection(name){
+    const dirs = {
+      up:{x:0,y:-1},
+      down:{x:0,y:1},
+      left:{x:-1,y:0},
+      right:{x:1,y:0}
+    };
+    const d = dirs[name];
+    if (!d) return;
+    if (d.x === -direction.x && d.y === -direction.y) return;
+    if (!running){
+      startGame();
+      direction = d;
+      nextDirection = d;
+      draw();
+      return;
+    }
+    nextDirection = d;
+  }
+
+  function startGame(){
+    clearInterval(timer);
+    resetState();
+    running = true;
+    overlay.classList.add('hidden');
+    timer = setInterval(tick, 118);
+  }
+
+  function endGame(){
+    running = false;
+    clearInterval(timer);
+    overlayTitle.textContent = 'Fim de jogo!';
+    overlayText.textContent = `Você fez ${score} ponto${score === 1 ? '' : 's'}. Bora tentar passar desse recorde?`;
+    startBtn.textContent = 'Jogar de novo';
+    overlay.classList.remove('hidden');
+  }
+
+  function tick(){
+    direction = nextDirection;
+    const head = {
+      x: dog[0].x + direction.x,
+      y: dog[0].y + direction.y
+    };
+
+    const hitWall = head.x < 0 || head.x >= cells || head.y < 0 || head.y >= cells;
+    const hitSelf = dog.some(part => part.x === head.x && part.y === head.y);
+
+    if (hitWall || hitSelf){
+      endGame();
+      return;
+    }
+
+    dog.unshift(head);
+
+    if (head.x === food.x && head.y === food.y){
+      score++;
+      scoreEl.textContent = score;
+      placeFood();
+      if (navigator.vibrate) navigator.vibrate(30);
+    } else {
+      dog.pop();
+    }
+
+    draw();
+  }
+
+  function roundedRect(x,y,w,h,r){
+    const radius = Math.min(r,w/2,h/2);
+    ctx.beginPath();
+    ctx.roundRect(x,y,w,h,radius);
+  }
+
+  function drawBackground(){
+    const size = canvas.width / cells;
+    ctx.fillStyle = '#f3d9a4';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = 'rgba(120,83,36,.07)';
+    for(let y=0;y<cells;y++){
+      for(let x=0;x<cells;x++){
+        if((x+y)%2===0){
+          ctx.fillRect(x*size,y*size,size,size);
+        }
+      }
+    }
+
+    ctx.strokeStyle = 'rgba(255,255,255,.24)';
+    ctx.lineWidth = 1;
+    for(let i=1;i<cells;i++){
+      ctx.beginPath();
+      ctx.moveTo(i*size,0);
+      ctx.lineTo(i*size,canvas.height);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0,i*size);
+      ctx.lineTo(canvas.width,i*size);
+      ctx.stroke();
+    }
+  }
+
+  function drawFood(){
+    const size = canvas.width / cells;
+    const cx = food.x*size + size/2;
+    const cy = food.y*size + size/2;
+
+    ctx.save();
+    ctx.translate(cx,cy);
+    ctx.rotate(-.18);
+    ctx.shadowColor='rgba(0,0,0,.2)';
+    ctx.shadowBlur=7;
+    ctx.fillStyle='#6f3d1f';
+    roundedRect(-size*.28,-size*.19,size*.56,size*.38,size*.18);
+    ctx.fill();
+    ctx.shadowBlur=0;
+    ctx.fillStyle='#a56531';
+    ctx.beginPath();
+    ctx.arc(-size*.11,-size*.04,size*.045,0,Math.PI*2);
+    ctx.arc(size*.12,size*.06,size*.035,0,Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function mixColor(hex, amount){
+    const clean = hex.replace('#','');
+    const n = parseInt(clean,16);
+    const clamp = v => Math.max(0,Math.min(255,v));
+    const r = clamp((n >> 16) + amount);
+    const g = clamp(((n >> 8) & 255) + amount);
+    const b = clamp((n & 255) + amount);
+    return `rgb(${r},${g},${b})`;
+  }
+
+  function drawDog(){
+    const size = canvas.width / cells;
+
+    // Corpo comprido do salsicha personalizado
+    for(let i=dog.length-1;i>=1;i--){
+      const part=dog[i];
+      const x=part.x*size+size*.08;
+      const y=part.y*size+size*.14;
+      ctx.fillStyle=i%2 ? dogStyle.body : mixColor(dogStyle.body,10);
+      ctx.shadowColor='rgba(0,0,0,.16)';
+      ctx.shadowBlur=5;
+      roundedRect(x,y,size*.84,size*.72,size*.27);
+      ctx.fill();
+      ctx.shadowBlur=0;
+
+      // Pelagem
+      if(dogStyle.pattern === 'spots'){
+        ctx.fillStyle=mixColor(dogStyle.body,-38);
+        ctx.beginPath();
+        ctx.ellipse(x+size*.30,y+size*.31,size*.13,size*.09,.35,0,Math.PI*2);
+        ctx.ellipse(x+size*.62,y+size*.48,size*.09,size*.07,-.25,0,Math.PI*2);
+        ctx.fill();
+      } else if(dogStyle.pattern === 'stripe'){
+        ctx.fillStyle=mixColor(dogStyle.body,-42);
+        roundedRect(x+size*.16,y+size*.14,size*.52,size*.12,size*.06);
+        ctx.fill();
+      }
+
+      // patinhas em alguns segmentos
+      if(i%3===0){
+        ctx.fillStyle=mixColor(dogStyle.body,-55);
+        ctx.fillRect(x+size*.16,y+size*.6,size*.14,size*.25);
+        ctx.fillRect(x+size*.56,y+size*.6,size*.14,size*.25);
+      }
+    }
+
+    const h=dog[0];
+    const cx=h.x*size+size/2;
+    const cy=h.y*size+size/2;
+    const angle=Math.atan2(direction.y,direction.x);
+
+    ctx.save();
+    ctx.translate(cx,cy);
+    ctx.rotate(angle);
+
+    // cabeça personalizada
+    ctx.fillStyle=dogStyle.head;
+    ctx.shadowColor='rgba(0,0,0,.18)';
+    ctx.shadowBlur=6;
+    if(dogStyle.headStyle === 'round'){
+      ctx.beginPath();
+      ctx.ellipse(0,0,size*.39,size*.38,0,0,Math.PI*2);
+    } else if(dogStyle.headStyle === 'long'){
+      roundedRect(-size*.38,-size*.31,size*.84,size*.62,size*.25);
+    } else {
+      roundedRect(-size*.36,-size*.34,size*.75,size*.68,size*.28);
+    }
+    ctx.fill();
+    ctx.shadowBlur=0;
+
+    // focinho
+    ctx.fillStyle=dogStyle.muzzle;
+    const muzzleX = dogStyle.headStyle === 'long' ? size*.10 : size*.08;
+    const muzzleW = dogStyle.headStyle === 'long' ? size*.50 : size*.44;
+    roundedRect(muzzleX,-size*.2,muzzleW,size*.4,size*.18);
+    ctx.fill();
+
+    // orelhas
+    ctx.fillStyle=dogStyle.ear;
+    ctx.beginPath();
+    const earScale = dogStyle.headStyle === 'round' ? .27 : .31;
+    ctx.ellipse(-size*.16,-size*.34,size*.19,size*earScale,-.35,0,Math.PI*2);
+    ctx.ellipse(-size*.16,size*.34,size*.19,size*earScale,.35,0,Math.PI*2);
+    ctx.fill();
+
+    // olhos
+    ctx.fillStyle='#111';
+    ctx.beginPath();
+    ctx.arc(size*.05,-size*.18,size*.055,0,Math.PI*2);
+    ctx.arc(size*.05,size*.18,size*.055,0,Math.PI*2);
+    ctx.fill();
+
+    // nariz
+    ctx.fillStyle='#111';
+    ctx.beginPath();
+    ctx.arc(dogStyle.headStyle === 'long' ? size*.54 : size*.45,0,size*.09,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.restore();
+
+    // rabinho no último bloco
+    const tail=dog[dog.length-1];
+    const before=dog[Math.max(0,dog.length-2)];
+    const tx=tail.x*size+size/2;
+    const ty=tail.y*size+size/2;
+    const tailAngle=Math.atan2(tail.y-before.y,tail.x-before.x);
+    ctx.save();
+    ctx.translate(tx,ty);
+    ctx.rotate(tailAngle);
+    ctx.strokeStyle=dogStyle.ear;
+    ctx.lineWidth=size*.12;
+    ctx.lineCap='round';
+    ctx.beginPath();
+    ctx.moveTo(-size*.15,0);
+    ctx.quadraticCurveTo(-size*.5,-size*.2,-size*.62,-size*.02);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function draw(){
+    drawBackground();
+    drawFood();
+    drawDog();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const key=e.key.toLowerCase();
+    const map={arrowup:'up',w:'up',arrowdown:'down',s:'down',arrowleft:'left',a:'left',arrowright:'right',d:'right'};
+    if(map[key]){
+      if (document.activeElement && ['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+      e.preventDefault();
+      setDirection(map[key]);
+    }
+  }, {passive:false});
+
+  document.querySelectorAll('.game-dir').forEach(btn => {
+    btn.addEventListener('pointerdown', () => setDirection(btn.dataset.dir));
+  });
+
+  stage.addEventListener('touchstart',(e)=>{
+    const t=e.changedTouches[0];
+    touchStartX=t.clientX;
+    touchStartY=t.clientY;
+  },{passive:true});
+
+  stage.addEventListener('touchend',(e)=>{
+    const t=e.changedTouches[0];
+    const dx=t.clientX-touchStartX;
+    const dy=t.clientY-touchStartY;
+    if(Math.max(Math.abs(dx),Math.abs(dy))<24) return;
+    setDirection(Math.abs(dx)>Math.abs(dy) ? (dx>0?'right':'left') : (dy>0?'down':'up'));
+  },{passive:true});
+
+  startBtn.addEventListener('click', startGame);
+  resetBtn.addEventListener('click', startGame);
+
+  customizeBtn.addEventListener('click', () => {
+    const isOpen = customizer.classList.toggle('open');
+    customizeBtn.setAttribute('aria-expanded', String(isOpen));
+    customizeBtn.textContent = isOpen ? '✕ Fechar' : '🎨 Personalizar';
+  });
+
+  [bodyColorInput,headColorInput,earColorInput,muzzleColorInput,headStyleInput,patternInput]
+    .forEach(input => input.addEventListener('input', syncDogStyle));
+
+  randomizeBtn.addEventListener('click', () => {
+    const palettes = [
+      ['#a95e2d','#a95e2d','#603016','#d58a4c'],
+      ['#2e211b','#3a2a22','#17110e','#b77a50'],
+      ['#d5a06b','#c98754','#77401f','#efbd8b'],
+      ['#d9d4cb','#e7e1d8','#73503d','#f0c7a3'],
+      ['#6c3f2e','#7c4a37','#3a2119','#c88761']
+    ];
+    const p = palettes[Math.floor(Math.random()*palettes.length)];
+    bodyColorInput.value=p[0];
+    headColorInput.value=p[1];
+    earColorInput.value=p[2];
+    muzzleColorInput.value=p[3];
+    headStyleInput.value=['classic','round','long'][Math.floor(Math.random()*3)];
+    patternInput.value=['solid','spots','stripe'][Math.floor(Math.random()*3)];
+    syncDogStyle();
+  });
+
+  loadDogStyle();
+  resetState();
+})();
+</script>
+
+</body>
+</html>
