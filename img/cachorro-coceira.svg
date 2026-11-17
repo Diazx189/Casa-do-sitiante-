@@ -1,0 +1,53 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="320" height="320" rx="28" fill="#F6D9CE"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="165" cy="262" rx="92" ry="14" fill="#241F1B" opacity="0.10"/>
+
+  <!-- tail -->
+  <path d="M232 190 Q268 175 262 140 Q258 165 228 178 Z" fill="#B9793F"/>
+
+  <!-- hind leg (down, sitting) -->
+  <path d="M198 232 Q206 260 196 270 L172 270 Q178 250 182 232 Z" fill="#C9895B"/>
+
+  <!-- front leg raised, scratching near ear -->
+  <path d="M118 200 Q92 180 84 140 Q80 118 96 104 Q92 128 104 150 Q114 172 132 190 Z" fill="#C9895B"/>
+  <ellipse cx="90" cy="106" rx="12" ry="9" fill="#C9895B" transform="rotate(-30 90 106)"/>
+
+  <!-- front leg standing -->
+  <path d="M150 210 Q150 245 144 268 L122 268 Q126 240 132 212 Z" fill="#C9895B"/>
+
+  <!-- body -->
+  <ellipse cx="172" cy="200" rx="72" ry="58" fill="#D69A66"/>
+  <ellipse cx="150" cy="222" rx="34" ry="26" fill="#EAC9A0"/>
+
+  <!-- head -->
+  <circle cx="122" cy="118" r="52" fill="#D69A66"/>
+  <ellipse cx="118" cy="140" rx="26" ry="18" fill="#EAC9A0"/>
+
+  <!-- far ear -->
+  <path d="M162 84 Q182 60 176 96 Q168 100 158 98 Z" fill="#B9793F"/>
+  <!-- near ear -->
+  <path d="M96 76 Q76 48 84 90 Q92 96 102 92 Z" fill="#C9895B"/>
+
+  <!-- snout -->
+  <ellipse cx="92" cy="132" rx="20" ry="15" fill="#EAC9A0"/>
+  <ellipse cx="76" cy="130" rx="7" ry="5.5" fill="#2B2118"/>
+
+  <!-- squinting eye (discomfort) -->
+  <path d="M116 104 Q126 96 136 104" stroke="#2B2118" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <path d="M108 116 Q98 122 92 116" stroke="#2B2118" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- itch burst near ear -->
+  <g stroke="#E31E11" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M148 68 L160 84"/>
+    <path d="M158 62 L172 80"/>
+    <path d="M170 68 L180 86"/>
+  </g>
+  <circle cx="162" cy="76" r="3.5" fill="#E31E11"/>
+  <circle cx="176" cy="70" r="2.5" fill="#E31E11"/>
+
+  <!-- small dust puffs from scratching leg -->
+  <circle cx="70" cy="150" r="5" fill="#2B2118" opacity="0.12"/>
+  <circle cx="58" cy="164" r="7" fill="#2B2118" opacity="0.10"/>
+</svg>
